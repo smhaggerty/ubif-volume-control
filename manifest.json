@@ -1,7 +1,7 @@
 {
-  "name": "Getting Started Example",
+  "name": "UBIF Sound Control",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "Gain control over alerts; No more blown speakers!!!",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "options_page": "options.html",
   "background": {
