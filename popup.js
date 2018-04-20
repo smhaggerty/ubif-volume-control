@@ -8,11 +8,6 @@ let changeColor = document.getElementById('changeColor');
 let changeVolume = document.getElementById('changeVolume');
 let volumeIndicator = document.getElementById('volumeIndicator')
 
-chrome.storage.sync.get('color', data => {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
-
 chrome.storage.sync.get('volume', data => {
   volumeIndicator.setAttribute("value", data.volume);
   changeVolume.value = data.volume
@@ -24,8 +19,3 @@ changeVolume.oninput = function(event)  {
   chrome.storage.sync.set({volume: volume})
   chrome.storage.sync.get(data => console.log(data))
 };
-
-chrome.storage.sync.get('color', data => {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
