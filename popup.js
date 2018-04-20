@@ -5,10 +5,17 @@
 'use strict';
 
 let changeColor = document.getElementById('changeColor');
+let changeVolume = document.getElementById('changeVolume');
+let volumeIndicator = document.getElementById('volumeIndicator')
 
 chrome.storage.sync.get('color', data => {
   changeColor.style.backgroundColor = data.color;
   changeColor.setAttribute('value', data.color);
+});
+
+chrome.storage.sync.get('volume', data => {
+  volumeIndicator.setAttribute("value", data.volume)
+
 });
 
 changeColor.onclick = function(element) {
@@ -16,3 +23,8 @@ changeColor.onclick = function(element) {
     chrome.tabs.executeScript(
         {code: 'document.body.style.backgroundColor = "' + color + '";'});
 };
+
+chrome.storage.sync.get('color', data => {
+  changeColor.style.backgroundColor = data.color;
+  changeColor.setAttribute('value', data.color);
+});
