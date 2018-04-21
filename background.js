@@ -5,11 +5,11 @@
 'use strict';
 
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({volume: 1.0});
+  chrome.storage.sync.set({volume: 0.5});
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'developer.chrome.com'},
+        pageUrl: {hostEquals: 'portal.ubif.net'},
       })],
       actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
