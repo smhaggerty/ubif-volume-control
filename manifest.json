@@ -2,7 +2,7 @@
   "name": "UBIF Sound Control",
   "version": "1.0",
   "description": "Gain control over alerts; No more blown speakers!!!",
-  "permissions": ["declarativeContent", "storage"],
+  "permissions": ["declarativeContent", "storage", "*://*/*"],
   "content_scripts": [
     {
       "matches": ["*://portal.ubif.net/*"],
