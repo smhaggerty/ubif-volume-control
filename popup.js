@@ -1,6 +1,5 @@
 'use strict';
 
-let changeColor = document.getElementById('changeColor');
 let changeVolume = document.getElementById('changeVolume');
 let volumeDisplay = document.getElementById('volumeDisplay');
 
