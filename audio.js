@@ -9,6 +9,10 @@
 //   { code: 'console.log("foo");'}
 // )
 chrome.storage.sync.get(data => {
-  document.getElementById("audio-alert").volume = data.volume
-  console.log(data.volume)
+  try {
+    document.getElementById("audio-alert").volume = data.volume
+    console.log(data.volume)
+  } catch (error) {
+    console.error(error.message)
+  }
 });
