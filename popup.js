@@ -13,7 +13,7 @@ chrome.storage.sync.get(data => {
   volumeDisplay.innerHTML = Math.floor(data.volume * 100);
 });
 
-changeVolume.oninput = function(event)  {
+changeVolume.onmouseup = function(event)  {
   updateVolume(event)
   adjustOpenTabVolume()
 };
