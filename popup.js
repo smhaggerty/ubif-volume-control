@@ -10,8 +10,8 @@ chrome.storage.sync.get(data => {
 });
 
 changeVolume.onmouseup = function(event)  {
-  updateVolume(event)
-  adjustOpenTabVolume()
+  updateVolume(event);
+  adjustOpenTabVolume();
 };
 
 const updateVolume = function(event) {
@@ -20,19 +20,17 @@ const updateVolume = function(event) {
   chrome.storage.sync.set({volume: volume});
 };
 
+const adjustOpenTabVolume = function() {
+  chrome.storage.sync.get(data => console.log(data));
+  chrome.tabs.query({}, function (tabs) {
+    tabs.map(checkCorrectTabAndExecute)
+  });
+};
+
 const checkCorrectTabAndExecute = function(tab) {
   if (tab.hasOwnProperty('url')) {
     if (tab.url.startsWith("https://portal.ubif.net/")) {
       chrome.tabs.executeScript(tab.id, {file: "audio.js"});
     }
   }
-};
-
-const adjustOpenTabVolume = function() {
-  chrome.storage.sync.get(data => console.log(data));
-  chrome.tabs.query({}, function (tabs) {
-    for (let i = 0; i < tabs.length; i++) {
-      checkCorrectTabAndExecute(tabs[i])
-    }
-  });
 };
