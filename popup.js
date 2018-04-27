@@ -28,9 +28,7 @@ const adjustOpenTabVolume = function() {
 };
 
 const checkCorrectTabAndExecute = function(tab) {
-  if (tab.hasOwnProperty('url')) {
-    if (tab.url.startsWith("https://portal.ubif.net/")) {
+  if (tab.hasOwnProperty('url') && tab.url.startsWith("https://portal.ubif")) {
       chrome.tabs.executeScript(tab.id, {file: "audio.js"});
-    }
   }
 };
