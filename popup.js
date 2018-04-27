@@ -1,7 +1,3 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 'use strict';
 
 let changeColor = document.getElementById('changeColor');
@@ -24,11 +20,19 @@ const updateVolume = function(event) {
   chrome.storage.sync.set({volume: volume});
 };
 
+const checkCorrectTabAndExecute = function(tab) {
+  if (tab.hasOwnProperty('url')) {
+    if (tab.url.startsWith("https://portal.ubif.net/")) {
+      chrome.tabs.executeScript(tab.id, {file: "audio.js"});
+    }
+  }
+};
+
 const adjustOpenTabVolume = function() {
   chrome.storage.sync.get(data => console.log(data));
   chrome.tabs.query({}, function (tabs) {
-    for (var i = 0; i < tabs.length; i++) {
-        chrome.tabs.executeScript(tabs[i].id, {file: "audio.js"});
+    for (let i = 0; i < tabs.length; i++) {
+      checkCorrectTabAndExecute(tabs[i])
     }
   });
 };
